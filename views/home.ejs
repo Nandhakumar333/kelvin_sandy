@@ -1,0 +1,441 @@
+<html>
+
+<head>
+  <title>Kelvin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!--  jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+  <!-- Bootstrap Date-Picker Plugin -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+
+
+  <style>
+    .footer {
+
+      margin: 0px auto;
+      padding: 20px 0px 20px 0px;
+      background-color: #f68b8b;
+    }
+
+    .jumbotron {
+
+      height: 100vh;
+      background: url("6.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /*for the white gap under the jumbotron*/
+
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background-color: #f68b8b;
+      border-color: #ffffff;
+      font-weight: bold;
+      letter-spacing: 0.10em;
+      padding: 10px;
+    }
+
+    .navbar-dark {
+      background-color: #f68b8b;
+    }
+
+    #ll {
+      color: #ffffff;
+      background-color: #f68b8b;
+      border-color: #ffffff;
+      font-weight: bold;
+      letter-spacing: 0.10em;
+      padding: 10px;
+
+    }
+
+    #btn {
+      border: none;
+      outline: none;
+      color: white;
+
+      background-color: inherit;
+
+    }
+
+    .nav-item {
+      font-size: 20px;
+      color: white;
+
+
+    }
+
+    #emp_details {
+      padding-left: 20px;
+      padding-right: 30px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav class="navbar  navbar-expand-sm bg-pink navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <h1>KELVIN</h1>
+        </a>
+      </li>
+      <li class="nav-item active"><a class="nav-link"><br>
+          <form>
+            <h5>&nbsp; Home</h5>
+          </form>
+        </a></li>
+
+      <br>
+      <li class="nav-item active"><a class="nav-link">
+          <form action="/emp_details" method="get" id="form-emp">
+
+            <h5 onclick="document.getElementById('form-emp').submit()" id="emp_details">Employee Details</h5>
+          </form>
+      </li></a>
+
+
+      <li class="nav-item active"><a class="nav-link">
+          <form action="/employee/entire" method="get" id="form-history">
+
+            <h5 onclick="document.getElementById('form-history').submit()" id="emp_details">History</h5>
+          </form>
+      </li></a>
+
+      <li class="nav-item active"><a class="nav-link">
+          <form action="/recent_data" method="get" id="form-recent">
+
+            <h5 onclick="document.getElementById('form-recent').submit()" id="emp_details">Recent Data</h5>
+          </form>
+      </li></a>
+
+      &nbsp;&nbsp;
+      <div class="modal fade" id="contact_dialog" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+            </div>
+            <div class="modal-body">
+              <div class="login-form">
+                <h3>Add Employee Details </h3><br>
+
+                <form action="add_employee" method="POST" id="add" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="col my-col">
+                      <h6> <label>Enter Registration ID</label></h6>
+                    </div>
+                    <div class="col my-col">
+                      <input type="text" name="uid" placeholder="Enter Registration ID" required><br>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col my-col">
+                      <h6><label>Enter Mobile</label></h6>
+                    </div>
+                    <div class="col my-col">
+                      <input type="number" name="mobile" placeholder="Enter mobile" required>
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <div class="col my-col">
+
+                      <h6><label>Enter image</label></h6>
+                    </div>
+
+
+                </form>
+              </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" style="width:25%" class="btn btn-primary" data-dismiss="modal"
+                onclick="document.getElementById('add').submit()">ADD</button>
+
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <li class="nav-item active"><a class="nav-link" class="btn btn-info" data-toggle="modal"
+          data-target="#contact_dialog"><br>
+          <h5>&nbsp; Add Employee</h5>
+        </a></li>
+
+
+    </ul>
+
+
+  </nav>
+
+
+  <!-- the div that represents the modal dialog -->
+ 
+  <form method="post" enctype="multipart/form-data" action="/upload">
+    <input type="text" name="id"><br>
+    <input type="file" name="file" accept=".png,.jpg,.jpeg,.PNG,.JPG,.JPEG">
+    <input type="submit" value="Submit">
+  </form>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="new1 col-md-6">
+          <h3><label>Filter By</label></h3>
+          <br><br>
+          <div class="form-group">
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname">Date</label></h3>
+              </div><br>
+              <form action="/by_date" method="post">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="date" class="form-control" id="dep" name="date" placeholder="DD/MM/YYYY"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname">Month</label></h3>
+              </div><br>
+              <form action="/process_post" method="POST">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="month" class="form-control" id="dep" name="month" placeholder="MM/YYYY"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname"> Shift</label></h3>
+              </div><br>
+              <form action="/shift" method="POST">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="text" class="form-control" id="dep" name="shift" placeholder="Enter Shift to Filter"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname"> Range</label></h3>
+              </div><br>
+              <form action="/range" method="POST">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="date" class="form-control" id="dep" name="from" placeholder="Enter Shift to Filter"
+                      style="width:250px;height:45px">
+                    <input type="date" class="form-control" id="dep" name="to" placeholder="Enter Shift to Filter"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+
+
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname">Search By Id</label></h3>
+              </div><br>
+              <form action="/search_post" method="post">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="text" class="form-control" id="dep" name="search_id" placeholder="Enter ID To Search"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname">Search By Email</label></h3>
+              </div><br>
+              <form action="/search_email" method="post">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="email" class="form-control" id="dep" name="search_email"
+                      placeholder="Enter ID To Search" style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-4 col-form-label">
+                <h3><label for="firstname">Search By Department</label></h3>
+              </div><br>
+              <form action="/search_dept" method="post">
+                <div class="row">
+                  <div class="col my-col">
+                    <input type="text" class="form-control" id="dep" placeholder="Enter ID To Search"
+                      style="width:250px;height:45px">
+                  </div>
+                  <div class="col my-col">
+                    <input type="submit" id="ll" value="Search">
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="search_dept">
+                    Dropdown button
+                  </button>
+
+
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" name="search_dept">
+                    <a class="dropdown-item" value="12424">AERONAUTICAL ENGINEERING</a>
+                    <a class="dropdown-item">AUTOMOBILE ENGINEERING</a>
+                    <a class="dropdown-item">ARTIFICIAL INTELLIGENCE & DATA SCIENCE (AI & DS)</a>
+                    <a class="dropdown-item">BIOTECHNOLOGY</a>
+                    <a class="dropdown-item">COMPUTER APPLICATIONS</a>
+                    <a class="dropdown-item">COMPUTER SCIENCE AND ENGINEERING</a>
+                    <a class="dropdown-item">ELECTRICAL AND ELECTRONICS ENGINEERING</a>
+                    <a class="dropdown-item">ELECTRONICS & INSTRUMENTATION ENGINEERING</a>
+                    <a class="dropdown-item"> ELECTRONICS AND COMMUNICATION ENGINEERING</a>
+                    <a class="dropdown-item"> FASHION TECHNOLOGY</a>
+                    <a class="dropdown-item">INFORMATION SCIENCE AND ENGINEERING</a>
+                    <a class="dropdown-item">INFORMATION TECHNOLOGY</a>
+                    <a class="dropdown-item">MANAGEMENT STUDIES</a>
+                    <a class="dropdown-item">MBA IN INNOVATION, ENTREPRENEURSHIP & VENTURE DEVELOPMENT [IEV] –
+                      STARTUP MASTERS PROGRAM</a>
+                    <a class="dropdown-item">MECHANICAL ENGINEERING</a>
+                    <a class="dropdown-item">MECHATRONICS ENGINEERING</a>
+                    <a class="dropdown-item">SCIENCE AND HUMANITIES</a>
+                    <a class="dropdown-item">TEXTILE TECHNOLOGY</a>
+
+
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+            <form action="/by_date" method="post" id="form-id2">
+
+              <div class="form-group row">
+
+                <div class="col-md-4  offset-md-3">
+
+
+                </div>
+                <div class="col-md-1  offset-md-1">
+
+
+
+                </div>
+              </div>
+            </form>
+            <form method="POST" action="/search_dept">
+              <select name="search_dept">
+                <option name="table1" value="Java">Java</option>
+                <option name="table2" value="Angular">Angular</option>
+                <option name="table3" value="Automation">Automation</option>
+              </select>
+              <input type='submit' name='register'>
+            </form>
+            <form>
+
+              <br><br><br><br><br><br><br>
+              <div class="offset-md-2">
+
+
+              </div>
+            </form>
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <br><br><br><br>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <p>© Developed BY KCIRI & Team</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

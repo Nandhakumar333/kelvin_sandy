@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      body {
+        text-align: center;
+      }
+
+      #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #customers td,
+      #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #customers tr:hover {
+        background-color: #ddd;
+      }
+
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #111;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table id="customers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Designation</th>
+          <th>Department</th>
+          <th>Mobile Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%if (personList.length >0){ %> <% personList.forEach(function(row){ %>
+        <tr>
+          <td><%= row.uid %></td>
+          <td><%= row.name %></td>
+          <td><%= row.email %></td>
+          <td><%= row.gender%></td>
+          <td><%= row.designation%></td>
+          <td><%= row.dept%></td>
+          <td><%= row.mobile %></td>
+        </tr>
+        <% })}else{ %>
+        <tr>
+          <td colspan="6">No Record Found</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

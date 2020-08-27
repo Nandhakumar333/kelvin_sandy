@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>File Upload</h1>
+      <%= typeof msg != 'undefined' ? msg : '' %>
+      <form method="post" enctype="multipart/form-data" action="/upload">
+        <input type="text" name="name" /><br />
+        <input
+          type="file"
+          name="file"
+          accept=".png,.jpg,.jpeg,.PNG,.JPG,.JPEG"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <img
+      src="<%= typeof file != 'undefined' ? file : '' %>"
+      class="responsive-img"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  </body>
+</html>
